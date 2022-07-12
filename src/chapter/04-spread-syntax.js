@@ -6,11 +6,22 @@
 
 /* 배열 전개 ------------------------------------------------------------------- */
 
-var integers = [-1, 0, 32, -101, 24];
-var maxInt = Math.max.apply(Math, [302, 1, 2, 30, -101].concat(integers));
+// ES6+
+const integers = [-1, 0, 32, -101, 24];
+// let maxInt = Math.max.apply(Math, [302, 1, 2, 30, -101].concat(integers));
+let maxInt = Math.max(...[302, 1, 2, 30, -101, ...integers]); // Array<number>
 
+// this 참조 유연(메서드 다른 객체가 빌려서 사용할 수 있는)
+// this가 무엇을 참조하는 지 확인하는 과정
+// Math.max(2, 3, -9, 22, 122);
+
+// 값의 집합
+// 속성:값 구성된 쌍의 집합
 
 /* 객체 전개 ------------------------------------------------------------------- */
+
+// 상속 (확장)
+// 합성 (확장)
 
 // 객체 합성 유틸리티 함수
 var extend = function () {
@@ -41,22 +52,32 @@ var extend = function () {
 };
 
 // 상태 업데이트 유틸리티 함수
-var setState = function(newState) {
-  return extend({}, state, newState);
+// const setState = (newState) => extend({}, state, newState)
+
+// ES6 새로운 전개 구문 활용
+const setState = (newState) => {
+  return {
+    ...state,
+    ...newState,
+    data: [...state.data, ...newState.data],
+  };
 };
 
 // 상태 객체 (불변 데이터 화)
 // React = 선언형 프로그래밍 패러다임
 // 불변(immutable) 데이터 관리
-var state = Object.freeze({
+const state = Object.freeze({
   loading: false,
   error: null,
   data: [{ id: 101, title: '초기 데이터' }],
 });
 
-console.log(
-  setState({ 
+const updatedState = setState(
+  /* new state */ {
     loading: true,
-    data: [{ id: 201, title: '데이터 업데이트' }]
-  })
+    data: [{ id: 201, title: '데이터 업데이트' }],
+  }
 );
+
+console.log('before: ', state);
+console.log('after: ', updatedState);
