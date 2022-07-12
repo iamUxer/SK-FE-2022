@@ -1,5 +1,7 @@
 "use strict";
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 var integers = [-1, 0, 32, -101, 24];
 var maxInt = Math.max.apply(Math, [302, 1, 2, 30, -101].concat(integers));
 
@@ -34,7 +36,9 @@ var extend = function extend() {
 };
 
 var setState = function setState(newState) {
-  return extend({}, state, newState);
+  return _extends({}, state, newState, {
+    data: [].concat(state.data, newState.data)
+  });
 };
 
 var state = Object.freeze({
@@ -45,10 +49,12 @@ var state = Object.freeze({
     title: '초기 데이터'
   }]
 });
-console.log(setState({
+var updatedState = setState({
   loading: true,
   data: [{
     id: 201,
     title: '데이터 업데이트'
   }]
-}));
+});
+console.log('before: ', state);
+console.log('after: ', updatedState);

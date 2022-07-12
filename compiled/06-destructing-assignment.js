@@ -14,8 +14,13 @@ var state = Object.freeze({
     title: 'gitbook'
   }]
 });
-var loading = state.loading;
-var error = state.error;
-var data = state.data;
-var firstData = data[0];
-var restData = data.slice(1);
+{
+  var isGlobal = true;
+  var loading = state.loading,
+      error = state.error,
+      resources = state.data;
+  var first = resources[0],
+      rest = resources.slice(1);
+  console.log(first);
+  console.log(rest);
+}
