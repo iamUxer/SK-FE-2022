@@ -16,7 +16,7 @@ function getRandom(n) {
 
 // 일반 함수 식
 const fibonacci = function (n) {
-  if (n === 0) return 0;
+  if (n <= 0) return 0;
   if (n === 1) return 1;
   return fibonacci(n - 1) + fibonacci(n - 2);
 };
@@ -26,7 +26,7 @@ const fibonacci = function (n) {
 // - 값을 바로 반환할 경우 블록과 return을 생략할 수 있다.
 // - 함수 내부에서 더 이상 arguments 객체를 사용할 수 없다.
 const fibonacciArrow = (n) =>
-  n === 0 ? 0 : n === 1 ? 1 : fibonacci(n - 1) + fibonacci(n - 2);
+  n <= 0 ? 0 : n === 1 ? 1 : fibonacciArrow(n - 1) + fibonacciArrow(n - 2);
 
 const numberWithComma = (n) =>
   n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');

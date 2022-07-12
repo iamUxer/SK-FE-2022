@@ -33,8 +33,8 @@ var euid = {
   [`get_${calcPropName}`]() {
     return this.name;
   },
-  show() {},
-  look() {},
+  show,
+  look,
   watch() {
     console.log('this :', this);
     console.log('this.name :', this.name);

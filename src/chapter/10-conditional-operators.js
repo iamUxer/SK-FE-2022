@@ -1,6 +1,3 @@
-/* eslint-disable jest/expect-expect */
-/* eslint-disable no-unused-vars */
-
 // React JSX 식 (JS extenstions like XML)
 // 값을 반환하는 것: 식, 연산자, 함수 등등
 // 값을 반환하지 않는 것: if, while, for, switch 문 ...
@@ -11,7 +8,7 @@
 // 이항
 // 삼항
 
-/* 3항 연산 식(터너리, ternary), nullish 병합 연산자, 옵셔널 체이닝을 활용해 코드를 작성합니다. ---------------- */
+/* 3항 연산 식(터너리, ternary), nullish 병합 연산자, 옵셔널 체이닝을 활용해 코드를 작성합니다. ---- */
 
 // ----------------------------------------------------------------------------------
 // Nullish coalescing operator

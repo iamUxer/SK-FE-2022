@@ -2,7 +2,7 @@
 /* ECMAScript NEXT를 사용해 함수를 작성합니다.                                       */
 /* -------------------------------------------------------------------------- */
 
-// ES 5 (2009)
+// ES5 (2009)
 // function renderCard(card) {
 //   return (
 //     '<div class="card">\
@@ -17,21 +17,9 @@
 //   );
 // }
 
-// ES 6 (2015)
+/* -------------------------------------------------------------------------- */
 
-const firstCard = {
-  title: 'React 펀드멘탈',
-  description: 'React 애플리케이션 및 라이브러리를 빌드하는 데 필요한 기본 개념을 배웁니다.',
-  image: {
-    src: 'react-fundamentals.webp',
-    alt: 'React Fundamentals',
-  },
-  link: {
-    href: '/react-fundamentals',
-    text: 'React fundamentals',
-  },
-};
-
+// ES6 (2015)
 const renderCard = (card) => {
   return `
     <div class="card">
@@ -43,8 +31,24 @@ const renderCard = (card) => {
       </div>    
     </div>
   `;
-}
+};
 
 const removeSpaceString = (string) => string.replace(/\s+/g, '');
+
+/* -------------------------------------------------------------------------- */
+
+const firstCard = {
+  title: 'React 펀드멘탈',
+  description:
+    'React 애플리케이션 및 라이브러리를 빌드하는 데 필요한 기본 개념을 배웁니다.',
+  image: {
+    src: 'react-fundamentals.webp',
+    alt: 'React Fundamentals',
+  },
+  link: {
+    href: '/react-fundamentals',
+    text: 'React fundamentals',
+  },
+};
 
 console.log(removeSpaceString(renderCard(firstCard)));
