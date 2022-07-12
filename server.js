@@ -1,4 +1,6 @@
-const server = require('live-server');
+import server from 'live-server';
+
+// const server = require('live-server');
 
 const params = {
   host: 'localhost',

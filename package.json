@@ -1,8 +1,9 @@
 {
+  "type": "module",
   "name": "learning-ecmascript-next",
   "scripts": {
     "start": "npm run dev",
-    "dev": "node server.js",
+    "dev": "node server.mjs",
     "compile": "babel src/chapter/*.js -d compiled",
     "watch": "npm run compile -- --watch",
     "test": "jest --watchAll",

@@ -4,19 +4,21 @@
 
 // Button 클래스
 class Button {
+  #mode = 'submit';
+
   constructor(type, label) {
-    this._type = type;
+    this.#mode = type;
     this.label = label;
   }
 
   static version = '1.0.0';
 
   get type() {
-    return this._type;
+    return this.#mode;
   }
 
   set type(newType) {
-    this._type = newType;
+    this.#mode = newType;
   }
 
   getType() {
@@ -25,18 +27,15 @@ class Button {
 }
 
 // Button 클래스를 확장한 AriaButton 클래스
-// var AriaButton = createClass(
-//   {
-//     constructor(type, label, usingAria) {
-//       Button.apply(this, arguments);
-//       this.usingAria = createClass.defaultArg(usingAria, true);
-//     },
-//     static: {
-//       displayName: 'AriaButton',
-//     },
-//     getVersion: function () {
-//       return AriaButton.version;
-//     },
-//   },
-//   Button
-// );
+class AriaButton extends Button {
+  constructor(type, label, usingAria = true) {
+    super(type, label);
+    this.usingAria = usingAria;
+  }
+
+  static displayName = 'AriaButton';
+
+  getVersion() {
+    return AriaButton.version;
+  }
+}
