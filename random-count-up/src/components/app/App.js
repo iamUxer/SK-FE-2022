@@ -1,7 +1,10 @@
 import './App.css';
 import { Component } from 'react';
-import { ReactComponent as ReactLogo } from 'assets/logo.svg';
-import { AppHeader, AppLink } from 'components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AppHeader } from 'components';
+
+import HomePage from 'pages/Home';
+import ProductsPage from 'pages/Products';
 
 class App extends Component {
   static defaultProps = {
@@ -12,14 +15,14 @@ class App extends Component {
     return (
       <div className="App">
         <AppHeader>
-          <ReactLogo className="App-logo" title="React" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <AppLink href="https://reactjs.org" external>
-            {this.props.linkText}
-          </AppLink>
+          <h1>App Header</h1>
         </AppHeader>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage linkText={this.props.linkText} />} />
+            <Route path="/products" element={<ProductsPage />} />
+          </Routes>
+        </Router>
       </div>
     );
   }
