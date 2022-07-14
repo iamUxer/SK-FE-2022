@@ -1,40 +1,41 @@
 import './App.css';
-import logoPath, { ReactComponent as ReactLogo } from 'assets/logo.svg';
-import { getAsset } from 'utils';
+import { Component } from 'react';
+import { ReactComponent as ReactLogo } from 'assets/logo.svg';
 
-// public/ static
-// console.log(getAsset('favicon.ico'));
+// Stateless Component (functional component)
+// do not use class component
 
-// src/ contenthash
-// console.log(logoPath);
+// Stateful Component
+// using class component
+class App extends Component {
+  static defaultProps = {
+    linkText: 'React 학습하기',
+  };
 
-// SVGR
-// React SVG Component
-// console.log(ReactLogo);
-// React SVG Element (JSX)
-// console.log(<ReactLogo />);
+  // constructor(props) {
+  //   super(props);
+  // }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <ReactLogo className="App-logo" title="React" />
-        {/* <img src={logoPath} className="App-logo" alt="React" /> */}
-        {/* <img src={getAsset('favicon.ico')} className="App-logo" alt="React" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          React 학습하기
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <ReactLogo className="App-logo" title="React" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {this.props.linkText}
+          </a>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
