@@ -5,6 +5,7 @@ import { AppHeader } from 'components';
 
 import HomePage from 'pages/Home';
 import ProductsPage from 'pages/Products';
+import JsxInActionPage from 'pages/JsxInAction';
 
 class App extends Component {
   static defaultProps = {
@@ -21,6 +22,7 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<HomePage linkText={this.props.linkText} />} />
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/jsx-in-action" element={<JsxInActionPage />} />
           </Routes>
         </Router>
       </div>

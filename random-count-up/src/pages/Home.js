@@ -14,5 +14,10 @@ export default function HomePage({ linkText }) {
     <p>
       <Link to="/products">Products</Link>
     </p>,
+    <p>
+      <Link to="/jsx-in-action">
+        <abbr title="JavaScript extention like XML Syntax">JSX</abbr> in Action
+      </Link>
+    </p>,
   ];
 }
