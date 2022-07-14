@@ -1,38 +1,25 @@
 import './App.css';
 import { Component } from 'react';
 import { ReactComponent as ReactLogo } from 'assets/logo.svg';
+import { AppHeader, AppLink } from 'components';
 
-// Stateless Component (functional component)
-// do not use class component
-
-// Stateful Component
-// using class component
 class App extends Component {
   static defaultProps = {
     linkText: 'React 학습하기',
   };
 
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <AppHeader>
           <ReactLogo className="App-logo" title="React" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <AppLink href="https://reactjs.org" external>
             {this.props.linkText}
-          </a>
-        </header>
+          </AppLink>
+        </AppHeader>
       </div>
     );
   }
