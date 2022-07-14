@@ -11,9 +11,7 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
   <StrictMode>
-    {/* component and props */}
-    {/* props : { linkText: undefined }  */}
-    <App linkText={undefined} />
+    <App />
   </StrictMode>
 );
 

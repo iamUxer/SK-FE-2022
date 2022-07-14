@@ -8,19 +8,16 @@ import ProductsPage from 'pages/Products';
 import JsxInActionPage from 'pages/JsxInAction';
 
 class App extends Component {
-  static defaultProps = {
-    linkText: 'React 학습하기',
-  };
-
   render() {
     return (
       <div className="App">
-        <AppHeader>
-          <h1>App Header</h1>
-        </AppHeader>
         <Router>
+          <AppHeader />
           <Routes>
-            <Route path="/" element={<HomePage linkText={this.props.linkText} />} />
+            <Route
+              path="/"
+              element={<HomePage linkText={this.props.linkText} />}
+            />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/jsx-in-action" element={<JsxInActionPage />} />
           </Routes>

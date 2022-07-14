@@ -1,0 +1,41 @@
+.App-header {
+  min-height: 20vh;
+}
+
+/* blind, screen-off, a11y-hidden */
+.a11yHidden {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  clip-path: circle(0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.gnb ul {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  display: flex;
+  column-gap: 48px;
+  color: #fff;
+}
+
+.gnb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gnb a:hover {
+  color: #2c84d7;
+}
+
+.gnb a.activated {
+  color: #55f1d2;
+}

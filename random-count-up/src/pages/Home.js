@@ -4,23 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage({ linkText }) {
   return (
-    <>
+    <figure style={{ marginTop: 120 }}>
       <ReactLogo className="App-logo" title="React" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <AppLink href="https://reactjs.org" external>
-        {linkText}
-      </AppLink>
-      <p>
-        <Link to="/products">Products</Link>
-      </p>
-      <p>
-        <Link to="/jsx-in-action">
-          <abbr title="JavaScript extention like XML Syntax">JSX</abbr> in
-          Action
-        </Link>
-      </p>
-    </>
+    </figure>
   );
 }
