@@ -1,5 +1,6 @@
 import './AppHeader.css';
 import { NavLink } from 'react-router-dom';
+import { A11yHidden } from 'components';
 
 /**
  * 실습 미션
@@ -20,7 +21,9 @@ export const AppHeader = () => {
   return (
     <header className="App-header">
       <nav className="gnb">
-        <h2 className="a11yHidden">Global Navigation Bar</h2>
+        <A11yHidden as="h4" style={{ fontSize: 30 }}>
+          Global Navigation Bar
+        </A11yHidden>
         <ul>
           {navigationList.map(({ id, path, text }) => (
             <li key={id}>
