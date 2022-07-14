@@ -1,12 +1,25 @@
 import './App.css';
-import logo from '../assets/logo.svg';
-import { getAsset } from '../utils';
+import logoPath, { ReactComponent as ReactLogo } from 'assets/logo.svg';
+import { getAsset } from 'utils';
+
+// public/ static
+// console.log(getAsset('favicon.ico'));
+
+// src/ contenthash
+// console.log(logoPath);
+
+// SVGR
+// React SVG Component
+// console.log(ReactLogo);
+// React SVG Element (JSX)
+// console.log(<ReactLogo />);
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="React" />
+        <ReactLogo className="App-logo" title="React" />
+        {/* <img src={logoPath} className="App-logo" alt="React" /> */}
         {/* <img src={getAsset('favicon.ico')} className="App-logo" alt="React" /> */}
         <p>
           Edit <code>src/App.js</code> and save to reload.
