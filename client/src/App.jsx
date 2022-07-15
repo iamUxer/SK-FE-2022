@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+/* Components --------------------------------------------------------------- */
+
+import { ErrorBoundary } from 'components';
+
 /* Pages -------------------------------------------------------------------- */
 
 import HomePage from 'pages/Home';
@@ -11,13 +15,15 @@ import LearnHooksPage from 'pages/LearnHooks';
 export default function App() {
   return (
     <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/learn-class" element={<LearnClassPage />} />
-          <Route path="/learn-hooks" element={<LearnHooksPage />} />
-        </Routes>
-      </div>
+      <ErrorBoundary>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/learn-class" element={<LearnClassPage />} />
+            <Route path="/learn-hooks" element={<LearnHooksPage />} />
+          </Routes>
+        </div>
+      </ErrorBoundary>
     </Router>
   );
 }
