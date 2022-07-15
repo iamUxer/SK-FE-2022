@@ -1,13 +1,6 @@
 import './TiltCard.css';
-import React from 'react';
-// import VanillaTilt from 'vanilla-tilt'
-
-/* -------------------------------------------------------------------------- */
-// 참고
-// Vanilla Tilt — https://www.npmjs.com/package/vanilla-tilt
-// jQuery Tilt  — https://www.npmjs.com/package/tilt.js
-// React Tilt   — https://www.npmjs.com/package/react-parallax-tilt
-/* -------------------------------------------------------------------------- */
+import { useEffect, useRef } from 'react';
+import VanillaTilt from 'vanilla-tilt';
 
 // Vanilla Tilt 옵션
 const tiltOptions = {
@@ -16,29 +9,34 @@ const tiltOptions = {
   'perspective': 1000,
   'scale': 1.01,
   'glare': true,
-  'max-glare': 0.25,
+  'max-glare': 1,
 };
 
-export class TiltCard extends React.Component {
-  static defaultProps = {
-    options: tiltOptions,
-  };
+export function TiltCard({ options, children, ...restProps }) {
+  const cardRef = useRef(null);
 
-  // DOM 요소 참조를 목적으로 Ref를 생성합니다.
-  // → 코드 작성
+  // useEffect Hook 3 points
+  // 1. effect callback
+  // 2. dependency list
+  // 3. effect callback => cleanup
+  useEffect(() => {
+    // 구독
+    const { current: domNode } = cardRef;
+    VanillaTilt.init(domNode, options);
 
-  // 최초 마운트 시점 이후 처리할 로직을 작성합니다.
-  // → 코드 작성
+    // 정리(취소)
+    return () => {
+      domNode.vanillaTilt.destroy();
+    };
+  }, [options]);
 
-  // 마운트 해제 직전에 처리할 로직을 작성합니다.
-  // → 코드 작성
-
-  render() {
-    const { children } = this.props;
-
-    return (
-      // 생성된 Ref를 참조하도록 설정합니다.
-      <div className="tiltCard">{children}</div>
-    );
-  }
+  return (
+    <div ref={cardRef} className="tiltCard" {...restProps}>
+      {children}
+    </div>
+  );
 }
+
+TiltCard.defaultProps = {
+  options: tiltOptions,
+};

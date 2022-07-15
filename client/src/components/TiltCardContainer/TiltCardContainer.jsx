@@ -13,13 +13,6 @@ export class TiltCardContainer extends Component {
     ],
   };
 
-  handleRemoveCard = (id) => {
-    this.setState({
-      ...this.state,
-      cards: this.state.cards.filter((card) => card.id !== id),
-    });
-  };
-
   render() {
     const { cards } = this.state;
 
@@ -52,4 +45,11 @@ export class TiltCardContainer extends Component {
       </div>
     );
   }
+
+  handleRemoveCard = (id) => {
+    this.setState({
+      ...this.state,
+      cards: this.state.cards.filter((card) => card.id !== id),
+    });
+  };
 }

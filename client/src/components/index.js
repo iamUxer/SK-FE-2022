@@ -1,3 +1,4 @@
+export * from './Button/Button';
 export * from './Emoji/Emoji';
 export * from './Banner/Banner';
 export * from './A11yHidden/A11yHidden';
