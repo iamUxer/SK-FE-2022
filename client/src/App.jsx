@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import HomePage from 'pages/Home';
 import LearnClassPage from 'pages/LearnClass';
+import LearnHooksPage from 'pages/LearnHooks';
 
 /* App ---------------------------------------------------------------------- */
 
@@ -13,7 +14,8 @@ export default function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/learn" element={<LearnClassPage />} />
+          <Route path="/learn-class" element={<LearnClassPage />} />
+          <Route path="/learn-hooks" element={<LearnHooksPage />} />
         </Routes>
       </div>
     </Router>
