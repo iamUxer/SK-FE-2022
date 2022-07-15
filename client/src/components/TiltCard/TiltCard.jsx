@@ -1,6 +1,7 @@
 import './TiltCard.css';
 import { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
+import { useTheme } from 'contexts/theme';
 
 // Vanilla Tilt 옵션
 const tiltOptions = {
@@ -13,6 +14,7 @@ const tiltOptions = {
 };
 
 export function TiltCard({ options, children, ...restProps }) {
+  const { theme } = useTheme();
   const cardRef = useRef(null);
 
   // useEffect Hook 3 points
@@ -31,7 +33,16 @@ export function TiltCard({ options, children, ...restProps }) {
   }, [options]);
 
   return (
-    <div ref={cardRef} className="tiltCard" {...restProps}>
+    <div
+      ref={cardRef}
+      className="tiltCard"
+      style={{
+        background: theme.bg,
+        color: theme.fg,
+        border: '3px solid red',
+      }}
+      {...restProps}
+    >
       {children}
     </div>
   );

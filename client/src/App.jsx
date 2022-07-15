@@ -11,21 +11,26 @@ import LearnClassPage from '@/pages/LearnClass';
 import LearnHooksPage from '@/pages/LearnHooks';
 import DomPage from '@/pages/Dom';
 
+/* Contexts ----------------------------------------------------------------- */
+import { ThemeProvider } from './contexts/theme';
+
 /* App ---------------------------------------------------------------------- */
 
 export default function App() {
   return (
     <Router>
-      <ErrorBoundary>
-        <div className="app">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/learn-class" element={<LearnClassPage />} />
-            <Route path="/learn-hooks" element={<LearnHooksPage />} />
-            <Route path="/dom" element={<DomPage />} />
-          </Routes>
-        </div>
-      </ErrorBoundary>
+      <ThemeProvider>
+        <ErrorBoundary>
+          <div className="app">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/learn-class" element={<LearnClassPage />} />
+              <Route path="/learn-hooks" element={<LearnHooksPage />} />
+              <Route path="/dom" element={<DomPage />} />
+            </Routes>
+          </div>
+        </ErrorBoundary>
+      </ThemeProvider>
     </Router>
   );
 }
