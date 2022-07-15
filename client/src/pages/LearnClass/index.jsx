@@ -22,7 +22,7 @@ class LearnClassPage extends Component {
       };
     } else {
       return {
-        additionalSbject: 'Piniya',
+        additionalSbject: 'Pinia',
       };
     }
   }
