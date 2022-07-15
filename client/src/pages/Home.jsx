@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components';
+import { Button, ModalDialog } from '@/components';
+import { ReactComponent as CheckMark } from '@/assets/icons/check-mark.svg';
 
 export default function HomePage() {
   const buttonRef = useRef(null); // { current: null }
@@ -8,6 +9,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [gatewayItems, setGatewayItems] = useState([]);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -32,22 +34,31 @@ export default function HomePage() {
 
   // console.table({ loading, error, gatewayItems });
 
+  const handleFocusingButton = () => {
+    const buttonNode = buttonRef.current;
+    buttonNode.focus();
+    buttonNode.style.cssText = 'outline: 3px solid currentColor';
+  };
+
+  const handleOpenModalDialog = () => {
+    setIsShowModal(true);
+  };
+
+  const handleCloseModalDialog = () => {
+    setIsShowModal(false);
+  };
+
   return (
     <div className="container">
       <h1 style={{ fontSize: 24, textAlign: 'center' }}>
+        <CheckMark width={24} height={24} />
         SK GATEWAY 실습을 진행합니다.
       </h1>
-      <button
-        type="button"
-        onClick={() => {
-          const buttonNode = buttonRef.current;
-          buttonNode.focus();
-          buttonNode.style.cssText = 'outline: 3px solid currentColor';
-        }}
-      >
-        하단 버튼에 초점을 이동시켜봅시다.
-      </button>
-      <Button ref={buttonRef}>focus me</Button>
+      <button type="button">하단 버튼에 초점을 이동시켜봅시다.</button>
+      <Button ref={buttonRef} onOpen={handleOpenModalDialog}>
+        open modal dialog
+      </Button>
+      {isShowModal && <ModalDialog onClose={handleCloseModalDialog} />}
     </div>
   );
 }

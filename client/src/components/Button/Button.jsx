@@ -9,6 +9,7 @@ import { forwardRef } from 'react';
 function ButtonOriginal(
   {
     type = 'button',
+    onOpen,
     buttonProps,
     children,
     isShowDummyText = true,
@@ -18,7 +19,7 @@ function ButtonOriginal(
 ) {
   return (
     <div className={styles.wrapper} {...restProps}>
-      <button ref={ref} type={type} {...buttonProps}>
+      <button ref={ref} type={type} onClick={onOpen} {...buttonProps}>
         {children}
       </button>
       {isShowDummyText && <span>dummy text</span>}
