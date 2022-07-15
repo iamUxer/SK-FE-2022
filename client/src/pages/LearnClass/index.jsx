@@ -1,5 +1,6 @@
 import styles from './style.module.css';
 import { Component } from 'react';
+import { Emoji } from 'components';
 
 class LearnClassPage extends Component {
   /* RENDER ------------------------------------------------------------------- */
@@ -24,6 +25,8 @@ class LearnClassPage extends Component {
       return <div role={'alert'}>오류 발생!</div>;
     }
 
+    const isRenderingEmoji = subject.includes('React');
+
     return (
       <div id="learnClass" className={styles.container} lang="en">
         <button
@@ -34,6 +37,10 @@ class LearnClassPage extends Component {
           Toggle Subject
         </button>
         <h1>{subject}</h1>
+
+        {isRenderingEmoji && (
+          <Emoji image="react-atom.png" label="React Favorite Icon" />
+        )}
 
         {randomUser && (
           <img
@@ -55,11 +62,15 @@ class LearnClassPage extends Component {
   }
 
   componentDidUpdate() {
-    const { subject } = this.state;
-    document.querySelector('.userProfile').hidden = subject.includes('Vue');
+    this.toggleUserProfile();
   }
 
   /* METHODS ------------------------------------------------------------------ */
+
+  toggleUserProfile() {
+    const { subject } = this.state;
+    document.querySelector('.userProfile').hidden = subject.includes('Vue');
+  }
 
   stylingContainer() {
     const node = document.getElementById('learnClass');
