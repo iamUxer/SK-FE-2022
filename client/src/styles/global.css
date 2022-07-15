@@ -4,6 +4,10 @@ body {
   font: 300 1rem/1.5 'Spoqa Hans Sans', sans-serif;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .a11yHidden {
   overflow: hidden;
   position: absolute;

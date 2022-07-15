@@ -2,22 +2,81 @@ import styles from './style.module.css';
 import { Component } from 'react';
 
 class LearnClassPage extends Component {
+  /* RENDER ------------------------------------------------------------------- */
+
+  // constructor
   state = {
     subject: 'React',
+    isLoading: false,
+    randomUser: null,
+    hasError: false,
   };
 
-  handleToggleSubject() {
-    // 1. {}
-    // this.setState({
-    //   subject: this.state.subject.includes('Vue') ? 'React' : 'Vue',
-    // });
+  // render
+  render() {
+    const { isLoading, hasError, subject, randomUser } = this.state;
 
-    // 2. () => ({})
-    // this.setState(({ subject }) => ({
-    //   subject: subject.includes('Vue') ? 'React' : 'Vue',
-    // }));
+    if (isLoading) {
+      return <div role={'alert'}>로딩 중입니다.......</div>;
+    }
 
-    // 3. callback
+    if (hasError) {
+      return <div role={'alert'}>오류 발생!</div>;
+    }
+
+    return (
+      <div id="learnClass" className={styles.container} lang="en">
+        <button
+          type="button"
+          className={styles.button}
+          onClick={this.handleToggleSubject}
+        >
+          Toggle Subject
+        </button>
+        <h1>{subject}</h1>
+
+        {randomUser && (
+          <img
+            className="userProfile"
+            src={randomUser.picture.thumbnail}
+            alt=""
+            style={{ display: 'block' }}
+          />
+        )}
+      </div>
+    );
+  }
+
+  /* COMMIT ------------------------------------------------------------------- */
+
+  componentDidMount() {
+    this.stylingContainer();
+    this.fetchRandomUser();
+  }
+
+  componentDidUpdate() {
+    const { subject } = this.state;
+    document.querySelector('.userProfile').hidden = subject.includes('Vue');
+  }
+
+  /* METHODS ------------------------------------------------------------------ */
+
+  stylingContainer() {
+    const node = document.getElementById('learnClass');
+    node && (node.style.backgroundColor = '#1f38b7');
+  }
+
+  fetchRandomUser() {
+    fetch('https://randomuser.me/api')
+      .then((response) => response.json())
+      .then(({ results }) => {
+        const [randomUser] = results;
+        this.setState({ randomUser });
+      })
+      .catch((error) => console.error(error.message));
+  }
+
+  handleToggleSubject = () => {
     const newState = ({ subject }) => ({
       subject: subject.includes('Vue') ? 'React' : 'Vue',
     });
@@ -27,22 +86,7 @@ class LearnClassPage extends Component {
     };
 
     this.setState(newState, callback);
-
-    // React의 상태 업데이트는 동기(sync)이다? yes | no
-    // React 상태 업데이트는 비동기(async)이다.
-    console.log(`updated subject state = `, this.state.subject);
-  }
-
-  render() {
-    return (
-      <div id="learnClass" className={styles.container} lang="en">
-        <h1>{this.state.subject}</h1>
-        <button type="button" onClick={this.handleToggleSubject.bind(this)}>
-          Toggle Subject
-        </button>
-      </div>
-    );
-  }
+  };
 }
 
 export default LearnClassPage;

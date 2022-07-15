@@ -1,3 +1,12 @@
 .container {
-  padding: 4rem;
+  padding: 2rem 0 2rem 2rem;
+  color: #fff;
+}
+
+.button {
+  border: 0;
+  padding: 0.6rem 1rem;
+  background: #111;
+  color: #fff;
+  font-size: inherit;
 }
